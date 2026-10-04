@@ -1,0 +1,4 @@
+entity_id,display_name_masked,attributes
+ENT-SMURF-001,Synthetic Smurf Holdings LLC (FAKE),"{""synthetic"": true, ""segment"": ""retail"", ""risk_notes"": ""demo structuring/smurfing typology"", ""home_branch"": ""SYNTH-BRANCH-01""}"
+ENT-NORMAL-002,Synthetic Everyday Trading Co (FAKE),"{""synthetic"": true, ""segment"": ""sme""}"
+ENT-NORMAL-003,Synthetic Quiet Savings Ltd (FAKE),"{""synthetic"": true, ""segment"": ""retail""}"

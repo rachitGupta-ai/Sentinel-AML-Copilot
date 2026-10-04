@@ -1,0 +1,42 @@
+{
+  "generator": "snowflake/seed/generate_seed.py",
+  "spec": "aml-regulatory-copilot",
+  "task": "5.1",
+  "requirements": [
+    "2.1",
+    "2.2",
+    "2.3"
+  ],
+  "synthetic_only": true,
+  "anchor": "2026-01-15T12:00:00",
+  "counts": {
+    "entities": 3,
+    "transaction_events": 43,
+    "alerts": 2,
+    "policy_docs": 3
+  },
+  "structuring_entity": {
+    "entity_id": "ENT-SMURF-001",
+    "band": "9000 <= amount < 10000",
+    "window_days": 90,
+    "note": "Dominant fraction of windowed txns in band \u2192 high structuring_score (Req 2.2)."
+  },
+  "injected_defects": {
+    "missing_field": {
+      "event_id": "TXN-DEFECT-MISSING-CURRENCY",
+      "field": "currency",
+      "requirement": "2.3"
+    },
+    "duplicate_event": {
+      "event_id": "TXN-SMURF-000",
+      "duplicates_of": "TXN-SMURF-000",
+      "requirement": "2.3 / 2.5"
+    },
+    "stale_late_record": {
+      "event_id": "TXN-DEFECT-STALE-LATE",
+      "occurred_at": "2024-12-11T12:00:00",
+      "ingested_at": "2026-01-15T13:00:00",
+      "requirement": "2.3"
+    }
+  }
+}

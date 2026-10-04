@@ -1,0 +1,14 @@
+# Development + test dependencies for SentinelAML Copilot backend.
+# Install runtime deps first, then these:
+#   pip install -r requirements.txt -r requirements-dev.txt
+#
+# Property-based tests use hypothesis with @settings(max_examples=100).
+
+-r requirements.txt
+
+pytest==8.2.2
+pytest-asyncio==0.23.7
+hypothesis==6.103.2
+httpx==0.27.0
+ruff==0.4.9
+mypy==1.10.0

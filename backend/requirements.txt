@@ -1,0 +1,15 @@
+# Runtime dependencies for SentinelAML Copilot backend (Python 3.11).
+# Mirrors [project].dependencies in pyproject.toml with exact pins so the
+# demo provisions identically on a clean account.
+#
+# Install:  pip install -r requirements.txt
+# Dev tools (pytest, hypothesis, etc.) live in requirements-dev.txt.
+
+fastapi==0.111.0
+uvicorn[standard]==0.30.1
+pydantic==2.7.4
+pydantic-settings==2.3.4
+snowflake-connector-python==3.11.0
+snowflake-snowpark-python==1.19.0
+websockets==12.0
+structlog==24.2.0

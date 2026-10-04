@@ -1,0 +1,75 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "governed-aml-copilot"
+version = "0.1.0"
+description = "SentinelAML Copilot — AML suspicious-activity investigation and audit-ready SAR reporting, built natively on the Snowflake AI Data Cloud."
+readme = "README.md"
+requires-python = ">=3.11,<3.12"
+license = { text = "Proprietary" }
+
+# Runtime dependencies are pinned to specific, reproducible versions so the
+# demo provisions identically on a clean account. Python is pinned to 3.11
+# (requires-python above) per the design's mandated stack.
+dependencies = [
+    # Web framework + ASGI server
+    "fastapi==0.111.0",
+    "uvicorn[standard]==0.30.1",
+    # Config: pydantic-settings bound to env keys (no embedded secrets)
+    "pydantic==2.7.4",
+    "pydantic-settings==2.3.4",
+    # Snowflake-native access: connector + Snowpark
+    "snowflake-connector-python==3.11.0",
+    "snowflake-snowpark-python==1.19.0",
+    # WebSocket live updates (Command Centre / approval queue)
+    "websockets==12.0",
+    # Structured logging
+    "structlog==24.2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    # Test runner + property-based testing (min 100 iterations)
+    "pytest==8.2.2",
+    "pytest-asyncio==0.23.7",
+    "hypothesis==6.103.2",
+    "httpx==0.27.0",            # FastAPI TestClient transport
+    # Lint / format / types
+    "ruff==0.4.9",
+    "mypy==1.10.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["app*"]
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+asyncio_mode = "auto"
+# Property-based tests tag their properties in comments:
+#   # Feature: aml-regulatory-copilot, Property N: ...
+markers = [
+    "property: hypothesis-driven correctness properties (min 100 iterations)",
+    "integration: cross-service / golden-path integration tests",
+    "smoke: fast sanity and data-contract checks",
+]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+src = ["app", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.mypy]
+python_version = "3.11"
+packages = ["app"]
+warn_unused_configs = true
+disallow_untyped_defs = false

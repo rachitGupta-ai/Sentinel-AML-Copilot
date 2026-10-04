@@ -1,0 +1,3 @@
+alert_id,entity_id,typology,raised_at,correlation_key
+ALERT-STRUCT-001,ENT-SMURF-001,structuring,2026-01-14T12:00:00,CORR-ENT-SMURF-001-structuring
+ALERT-STRUCT-002,ENT-SMURF-001,structuring,2026-01-15T00:00:00,CORR-ENT-SMURF-001-structuring

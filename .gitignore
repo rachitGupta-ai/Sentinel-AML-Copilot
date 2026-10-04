@@ -1,0 +1,38 @@
+# Kiro workspace (specs, steering, sessions)
+.kiro/
+
+# Secrets & credentials — never commit
+.env
+*.env
+.env.*
+!.env.example
+!*.env.example
+backend/.env
+frontend/.env.local
+*.pem
+corp-ca-bundle.pem
+zscaler-root.pem
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+
+# OS / editor
+.DS_Store
+.idea/
+*.iml
+.vscode/

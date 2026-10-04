@@ -1,0 +1,1169 @@
+# Role
+
+Act as a principal enterprise architect, Snowflake AI engineer, product strategist,
+security architect, data modeller, hackathon judge, and technical product manager.
+
+Your responsibility is to deeply analyse the five official Snowflake CoCo CLI
+Hackathon 2026 GCC Edition challenges and transform the selected challenge into
+an implementation-ready, production-oriented project.
+
+Do not immediately generate application code.
+
+First understand the challenge, investigate the business problem, identify
+ambiguities, compare possible approaches, select the strongest project direction,
+and create a complete project specification.
+
+The objective is not to build another generic chatbot or dashboard.
+
+The proposed solution must:
+
+1. Solve a credible enterprise problem.
+2. Use Snowflake CoCo CLI meaningfully.
+3. Combine AI reasoning with governed enterprise data.
+4. Produce measurable business outcomes.
+5. Demonstrate an end-to-end workflow.
+6. Include security, governance, observability, explainability, and failure handling.
+7. Be achievable as a working hackathon prototype.
+8. Have enough differentiation and visual impact to impress judges.
+
+---
+
+# Official Evaluation Rubric
+
+Evaluate every decision against these weights:
+
+- Technical Execution: 40%
+- Real-World Relevance: 30%
+- Solution Completeness: 30%
+
+Create a traceability matrix showing how the proposed solution satisfies every
+part of the rubric.
+
+Do not invent additional official judging criteria.
+
+You may introduce internal engineering quality gates, but clearly label them as
+recommended project standards rather than official hackathon criteria.
+
+---
+
+# Official Challenges
+
+## Challenge 1: Risk, Fraud and Regulatory Intelligence Copilot
+
+### Business context
+
+Banking and NBFC teams manage:
+
+- Real-time fraud
+- Liquidity risk
+- Credit risk
+- AML requirements
+- Basel-related reporting
+- Local regulatory requirements
+- Audit and evidence preparation
+
+Many of these activities are still fragmented or manually executed.
+
+### Required outcome
+
+Build a copilot that:
+
+- Surfaces risk and fraud signals
+- Supports questions in natural language
+- Produces audit-ready regulatory outputs
+- Connects analytical results with source evidence
+- Makes risk findings understandable and traceable
+
+### Deep-analysis questions
+
+Analyse:
+
+1. Who are the primary users?
+2. What decisions does each user need to make?
+3. Which structured and unstructured data sources are required?
+4. How would fraud, credit risk, liquidity risk, AML, and regulatory reporting
+   interact without creating an excessively broad prototype?
+5. Which use case should be the primary scenario?
+6. What should be explicitly excluded from the MVP?
+7. What is the difference between a risk signal and a confirmed risk event?
+8. How will the system avoid presenting an AI-generated claim as a regulatory fact?
+9. How will every insight be linked to data, policy, model version, and calculation?
+10. How will false positives, model drift, stale data, and missing records be handled?
+11. Which actions should be automated?
+12. Which actions must require human approval?
+13. What would make an output genuinely audit-ready?
+14. Which measurable business and technical KPIs would demonstrate value?
+15. How will the demo prove that the system is more than a chatbot?
+
+### Candidate capabilities to evaluate
+
+- Fraud event ingestion
+- Transaction anomaly detection
+- Customer/entity risk aggregation
+- AML case summarisation
+- Regulatory-policy retrieval
+- Natural-language investigation
+- Evidence-backed answers
+- Case creation
+- Human approval workflow
+- Regulatory report generation
+- Immutable audit trail
+- Risk threshold configuration
+- Explainability and citation panel
+- Adversarial-query protection
+
+---
+
+## Challenge 2: Customer 360 and Next Best Action Engine
+
+### Business context
+
+Insurers and lenders need a unified customer view to improve:
+
+- Personalisation
+- Underwriting
+- Retention
+- Churn reduction
+- Customer servicing
+- Offer relevance
+
+Customer information can exist in structured systems and unstructured customer
+touchpoints, including call transcripts.
+
+### Required outcome
+
+Build an application that:
+
+- Unifies structured and unstructured touchpoints
+- Creates a customer 360 view
+- Recommends the next best action
+- Explains why the action is suitable
+- Supports responsible and governed decision-making
+
+### Deep-analysis questions
+
+Analyse:
+
+1. Who consumes the Customer 360 view?
+2. What business event triggers next-best-action generation?
+3. What is the smallest useful Customer 360 data model?
+4. Which touchpoints offer the highest signal?
+5. How will identities be resolved across disconnected systems?
+6. How will call transcripts be classified and summarised?
+7. How will consent, purpose limitation, and sensitive information be handled?
+8. How will recommendations differ from deterministic business rules?
+9. Should the engine optimise retention, product fit, service recovery, or underwriting?
+10. How will competing next actions be ranked?
+11. How will the engine explain its recommendation?
+12. How will the system prevent discriminatory recommendations?
+13. What happens when data is incomplete or contradictory?
+14. How are accepted, rejected, and ignored recommendations captured?
+15. How will user feedback improve future recommendations?
+16. Which offline and online metrics should be demonstrated?
+17. How will the demo prove business impact rather than only display a customer profile?
+
+### Candidate capabilities to evaluate
+
+- Identity resolution
+- Customer timeline
+- Structured and unstructured data fusion
+- Transcript sentiment and intent extraction
+- Customer need detection
+- Churn-risk estimation
+- Action generation
+- Action eligibility rules
+- Recommendation ranking
+- Reason codes
+- Human override
+- Outcome feedback
+- Consent and policy enforcement
+- Customer-data freshness indicator
+- Model and prompt observability
+
+---
+
+## Challenge 3: Predictive Maintenance and OEE Command Center
+
+### Business context
+
+Manufacturers experience unplanned downtime because operational-technology sensor
+data is disconnected from ERP and maintenance information.
+
+### Required outcome
+
+Build a solution that:
+
+- Converges IT and OT data
+- Predicts failures
+- Automates work-order workflows
+- Improves Overall Equipment Effectiveness
+- Provides an operational command centre
+
+### Deep-analysis questions
+
+Analyse:
+
+1. Which manufacturing asset should the prototype represent?
+2. What failure modes should be modelled?
+3. Which sensor signals can indicate those failures?
+4. Which ERP and maintenance records add necessary context?
+5. How will different sampling frequencies be aligned?
+6. How will missing, delayed, duplicated, and noisy sensor readings be handled?
+7. How will a failure-risk score be calculated and explained?
+8. How will the system distinguish an anomaly from predicted failure?
+9. How will OEE availability, performance, and quality be calculated?
+10. How will the solution connect prediction to operational action?
+11. When should a work order be recommended?
+12. When can it be automatically created?
+13. Which workflow steps require technician or supervisor approval?
+14. How will maintenance urgency, production impact, parts availability, and
+    technician availability affect prioritisation?
+15. What happens when the prediction model becomes unavailable?
+16. How will the system suppress repeated alerts for the same underlying incident?
+17. How will a simulator demonstrate normal operation, degradation, predicted
+    failure, intervention, and recovery?
+18. Which KPIs can be measured during the demo?
+19. How will the project avoid becoming just another monitoring dashboard?
+
+### Candidate capabilities to evaluate
+
+- Synthetic sensor-event generator
+- Asset hierarchy
+- Sensor ingestion and cleansing
+- Feature engineering
+- Anomaly detection
+- Failure-risk prediction
+- Remaining-useful-life estimate
+- Maintenance-history retrieval
+- Parts and inventory lookup
+- Work-order recommendation
+- Human approval
+- Work-order creation
+- OEE calculation
+- Root-cause evidence timeline
+- Alert correlation and deduplication
+- Incident replay
+- Command-centre interface
+- Model drift and data-quality monitoring
+
+---
+
+## Challenge 4: Patient/Member 360 and Clinical or Regulatory Document Copilot
+
+### Mandatory data constraint
+
+Use only fully synthetic or properly de-identified data.
+
+No real patient information should be included in the repository, prompts,
+screenshots, logs, test fixtures, demo recording, or generated reports.
+
+### Business context
+
+Healthcare and life-sciences teams work across:
+
+- Siloed EHR information
+- Claims records
+- Safety information
+- Clinical documentation
+- Regulatory documents
+- Dense unstructured content
+
+### Required outcome
+
+Build a copilot that:
+
+- Creates a patient/member 360 view
+- Unifies structured records and documents
+- Answers clinical, safety, or regulatory questions
+- Provides cited supporting evidence
+
+### Deep-analysis questions
+
+Analyse:
+
+1. Who is the intended user?
+2. Is the primary scenario clinical, operational, safety-related, or regulatory?
+3. Which use case presents the lowest patient-safety risk while demonstrating value?
+4. What synthetic data will be required?
+5. How will structured and unstructured records be linked?
+6. How will document sections, tables, dates, and references be preserved?
+7. What constitutes sufficient evidence for an answer?
+8. How will citations link back to an exact source passage?
+9. How will conflicting records be presented?
+10. How will the system handle insufficient evidence?
+11. Which questions must the system refuse to answer?
+12. How will hallucinations and unsupported medical conclusions be prevented?
+13. How will access be restricted by role and purpose?
+14. How will every answer be audited?
+15. How will users distinguish source facts from generated summaries?
+16. How will temporal clinical information be ordered?
+17. How will data lineage and freshness be exposed?
+18. Which safety metrics must be demonstrated?
+19. How will the interface clearly state that the prototype is decision support,
+    not a substitute for professional judgement?
+
+### Candidate capabilities to evaluate
+
+- Synthetic patient/member generator
+- Patient/member timeline
+- Claims and encounter integration
+- Document ingestion
+- Evidence-aware retrieval
+- Citation generation
+- Conflicting-evidence detection
+- Unsupported-answer refusal
+- Safety-policy enforcement
+- Role-based access
+- Audit logging
+- Data-lineage panel
+- Document comparison
+- Clinical/regulatory question interface
+- Evidence-quality scoring
+- Evaluation dataset for grounded answers
+
+---
+
+## Challenge 5: Supply Chain Ontology and Governed Conversational Analytics
+
+### Business context
+
+Supply-chain data is fragmented across:
+
+- ERP platforms
+- Logistics systems
+- Supplier systems
+- Order-management systems
+- Plant systems
+- IoT sources
+
+Definitions and calculations often differ across departments, causing the same
+question to produce inconsistent answers.
+
+### Required outcome
+
+Build:
+
+- An industry ontology
+- A business entity and relationship model
+- Governed semantic views
+- A natural-language analytics layer
+- Consistent and trustworthy answers based on shared definitions and metrics
+
+Example relationship chain:
+
+Supplier → Part → Plant → Shipment → Order → Customer
+
+### Deep-analysis questions
+
+Analyse:
+
+1. Which business domain should the prototype focus on?
+2. Which supply-chain entities are essential?
+3. What relationships connect these entities?
+4. Which business terms commonly produce conflicting interpretations?
+5. How should metrics such as on-time delivery, fill rate, lead time, inventory
+   exposure, supplier risk, and perfect order rate be defined?
+6. How will metric definitions be versioned and governed?
+7. How will synonyms and organisation-specific terminology map to canonical concepts?
+8. How will users see the semantic interpretation of their question?
+9. How will ambiguous questions be detected?
+10. When should the system ask a clarifying question?
+11. How will row-level and column-level security be respected?
+12. How will users trace an answer from natural language to semantic definition,
+    generated query, source records, and final calculation?
+13. How will incorrect cross-domain joins be prevented?
+14. How will schema evolution be handled?
+15. How will the system prove that two departments now receive the same answer?
+16. Which operational decisions can be initiated from an analytical finding?
+17. What makes this solution more valuable than text-to-SQL?
+18. How will semantic consistency and answer accuracy be measured?
+19. How can the demonstration intentionally show and resolve an ambiguous question?
+
+### Candidate capabilities to evaluate
+
+- Supply-chain ontology
+- Business glossary
+- Entity relationship model
+- Governed semantic views
+- Metric-definition registry
+- Synonym resolution
+- Natural-language query planning
+- Ambiguity detection
+- Clarification workflow
+- Query generation
+- Query validation
+- Citation and data lineage
+- Access-policy enforcement
+- Answer consistency evaluation
+- Supplier-risk investigation
+- Shipment-delay impact analysis
+- What-if analysis
+- Governed action recommendation
+
+---
+
+# Phase 1: Challenge Comparison
+
+Create a challenge-comparison matrix.
+
+Score every challenge from 1 to 10 for:
+
+1. Business value
+2. Technical depth
+3. Differentiation
+4. Snowflake relevance
+5. Meaningful use of CoCo CLI
+6. Availability of safe synthetic data
+7. Ability to demonstrate an end-to-end workflow
+8. Governance and explainability depth
+9. Measurability
+10. Demo visual impact
+11. Hackathon implementation feasibility
+12. Risk of becoming a generic chatbot
+13. Risk of excessive project scope
+14. Potential for a compelling story
+15. Fit with an engineering team experienced in:
+    - Java and Spring Boot
+    - Distributed systems
+    - Event-driven workflows
+    - Agentic AI
+    - RAG
+    - Observability
+    - Enterprise governance
+    - Human-in-the-loop automation
+    - Operational command centres
+
+For every score:
+
+- Give a concise justification.
+- State assumptions.
+- Identify dependencies.
+- Identify major implementation risks.
+
+Provide:
+
+- Raw score
+- Rubric-weighted score
+- Risk-adjusted score
+- Confidence level
+
+The scoring method must be explained and reproducible.
+
+---
+
+# Phase 2: Select the Strongest Project
+
+Recommend:
+
+- Primary challenge
+- Backup challenge
+- Challenge that should not be selected
+- Reasons for each decision
+
+Do not select a challenge merely because it is technically interesting.
+
+Optimise for:
+
+- Hackathon judge impact
+- Technical credibility
+- Measurable enterprise value
+- End-to-end completeness
+- Demonstrable use of Snowflake CoCo CLI
+- Implementation feasibility
+- Responsible AI
+- Memorable product storytelling
+
+For the selected challenge, identify three competing project concepts.
+
+For each concept provide:
+
+- Product name
+- One-sentence proposition
+- Target user
+- Triggering business event
+- Primary workflow
+- Differentiator
+- Snowflake usage
+- CoCo CLI usage
+- AI usage
+- Required data
+- Business KPI
+- Technical KPI
+- Major risk
+- Demo climax
+
+Compare the three concepts and select one.
+
+---
+
+# Phase 3: Problem Framing
+
+For the chosen concept, define:
+
+## 1. Problem statement
+
+Use this format:
+
+[Target user] struggles with [problem] because [root cause], resulting in
+[measurable consequence]. The proposed solution will [intervention], improving
+[target outcomes] while maintaining [governance/safety requirements].
+
+## 2. Jobs to be done
+
+For every persona identify:
+
+- Situation
+- Motivation
+- Desired outcome
+- Existing workaround
+- Pain point
+- Decision being made
+- Evidence required
+- Action expected from the system
+
+## 3. Scope
+
+Separate the following:
+
+- MVP
+- Stretch goals
+- Explicitly out of scope
+- Future production roadmap
+
+Prevent scope creep. The MVP must demonstrate one complete high-value workflow.
+
+## 4. Value hypothesis
+
+Define:
+
+- Current-state baseline
+- Expected improvement
+- Measurement method
+- Demo proxy where production measurements are unavailable
+- Assumptions requiring validation
+
+Clearly label simulated or hypothetical business values.
+
+Do not fabricate production savings.
+
+---
+
+# Phase 4: End-to-End User Journey
+
+Design one main golden-path scenario and at least four non-happy-path scenarios.
+
+The golden path should include:
+
+1. Business event occurs.
+2. Data enters the Snowflake-based solution.
+3. Data quality and governance checks execute.
+4. Analytical or AI reasoning is performed.
+5. Relevant evidence is retrieved.
+6. A recommendation or decision is generated.
+7. Confidence and evidence are displayed.
+8. A human reviews or approves the action where required.
+9. A downstream action is simulated or executed safely.
+10. The outcome is captured.
+11. Metrics and audit trail are updated.
+
+Non-happy paths must include:
+
+- Missing or low-quality data
+- Conflicting evidence
+- Low-confidence AI output
+- Tool or downstream-service failure
+- Unauthorized user request
+- Prompt injection or malicious content
+- Duplicate event
+- Stale data
+- User rejection of recommendation
+- Recovery and retry
+
+For each path define:
+
+- Trigger
+- System decisions
+- User interactions
+- Data changes
+- Audit entries
+- Expected UI state
+- Expected metrics
+- Recovery behaviour
+
+---
+
+# Phase 5: Technical Architecture
+
+Produce an implementation-oriented architecture containing:
+
+## Experience layer
+
+- Operational command centre
+- Conversational interface
+- Investigation workspace
+- Evidence/citation panel
+- Approval interface
+- Audit and observability screens
+
+## Application layer
+
+- Backend APIs
+- Workflow orchestration
+- Session management
+- Authentication and authorisation
+- Human-in-the-loop service
+- Notification abstraction
+- Report generation
+- Action adapter
+
+## AI/agent layer
+
+- Intent classification
+- Query planning
+- Retrieval
+- Analytical reasoning
+- Recommendation generation
+- Citation assembly
+- Policy check
+- Confidence evaluation
+- Action proposal
+- Result validation
+- Refusal logic
+
+## Snowflake layer
+
+Determine the justified role of:
+
+- Databases and schemas
+- Tables
+- Views
+- Dynamic tables
+- Streams
+- Tasks
+- Stages
+- Snowpark
+- Cortex capabilities
+- Search/retrieval
+- Semantic models or governed semantic views
+- Row access policies
+- Masking policies
+- Tags
+- Data lineage
+- Audit records
+- CoCo CLI
+
+Do not force every Snowflake feature into the design.
+
+For each selected feature explain:
+
+- Why it is required
+- What data it handles
+- How it contributes to the demo
+- What alternative was rejected
+
+## Integration layer
+
+- Synthetic event generator
+- Simulated downstream system
+- Work-order, case, or action API
+- Notification mock
+- External document ingestion
+- Failure simulator
+
+## Observability layer
+
+- Structured logs
+- Traces
+- Metrics
+- Prompt and model telemetry
+- Workflow state
+- Tool invocation logs
+- Token/cost telemetry where available
+- Data-quality metrics
+- Security events
+- Evaluation results
+
+Create:
+
+1. System-context diagram
+2. Component diagram
+3. Data-flow diagram
+4. Sequence diagram
+5. Agent workflow
+6. Deployment view
+7. Trust-boundary diagram
+8. Failure and recovery diagram
+
+Use Mermaid syntax for every diagram.
+
+---
+
+# Phase 6: Agent and CoCo CLI Design
+
+Do not use “agentic AI” as a marketing label.
+
+Define the exact responsibilities of each agent or skill.
+
+Prefer a small number of focused components over unnecessary multi-agent complexity.
+
+For every agent or CoCo CLI skill specify:
+
+- Name
+- Purpose
+- Input contract
+- Output contract
+- Permitted tools
+- Prohibited actions
+- Required evidence
+- Decision boundaries
+- Confidence threshold
+- Retry strategy
+- Timeout
+- Fallback
+- Human-approval requirement
+- Audit events
+- Test cases
+
+Determine whether the project needs:
+
+- One orchestrator with modular skills
+- Multiple specialised agents
+- Deterministic workflow with selective AI calls
+
+Select the simplest architecture that satisfies the use case.
+
+Create a state machine such as:
+
+RECEIVED
+→ VALIDATED
+→ ENRICHED
+→ ANALYSED
+→ EVIDENCE_COLLECTED
+→ RECOMMENDATION_READY
+→ POLICY_CHECKED
+→ AWAITING_APPROVAL
+→ APPROVED / REJECTED
+→ ACTION_STARTED
+→ ACTION_COMPLETED / ACTION_FAILED
+→ VERIFIED
+→ CLOSED
+
+Include compensating behaviour for partial failure.
+
+---
+
+# Phase 7: Data Architecture
+
+Create a synthetic data strategy.
+
+Define:
+
+- Data sources
+- Entity model
+- Event model
+- Document model
+- Data volumes needed for the demo
+- Data frequency
+- Data-quality defects intentionally injected
+- Historical records
+- Ground-truth labels
+- Evaluation records
+- Sensitive fields
+- Retention requirements
+- Lineage requirements
+
+Produce:
+
+1. Conceptual data model
+2. Logical data model
+3. Physical Snowflake schema
+4. Sample records
+5. Synthetic-data generation rules
+6. Data-quality rules
+7. Data contracts
+8. Canonical event envelope
+9. Audit-event schema
+10. Evaluation dataset
+
+Synthetic data must create a believable story and support happy paths, edge cases,
+security testing, and measurable evaluations.
+
+Do not use confidential employer information, proprietary application code,
+real customer information, or real patient records.
+
+---
+
+# Phase 8: Security, Governance and Responsible AI
+
+Create a threat model covering:
+
+- Prompt injection
+- Indirect prompt injection in documents
+- Data exfiltration
+- Cross-tenant or cross-role access
+- Excessive permissions
+- SQL injection
+- Unsafe generated actions
+- Hallucinated evidence
+- Citation mismatch
+- Sensitive-data leakage
+- Log leakage
+- Model manipulation
+- Replay attacks
+- Tampered events
+- Unauthorized approval
+- Duplicate execution
+- Denial of service
+- Dependency failure
+
+For each threat provide:
+
+- Attack scenario
+- Impact
+- Likelihood
+- Preventive control
+- Detective control
+- Recovery control
+- Verification test
+
+Responsible-AI controls must include:
+
+- Evidence grounding
+- Confidence presentation
+- Source-versus-generated-content distinction
+- Human override
+- Refusal for unsupported requests
+- Auditability
+- Fairness checks where applicable
+- Explanation of recommendations
+- Evaluation against ground truth
+- Feedback capture
+
+Every action with material operational, financial, regulatory, or safety impact
+must be policy-checked before execution.
+
+---
+
+# Phase 9: Testing and Evaluation
+
+Build a comprehensive evaluation framework.
+
+## Functional testing
+
+- Unit tests
+- API tests
+- Workflow tests
+- Data-quality tests
+- UI tests
+- Integration tests
+- End-to-end tests
+
+## AI evaluation
+
+- Groundedness
+- Citation precision
+- Citation coverage
+- Answer relevance
+- Unsupported-claim rate
+- Refusal correctness
+- Recommendation quality
+- Tool-selection correctness
+- Structured-output validity
+- Prompt-injection resistance
+
+## Operational evaluation
+
+- Detection latency
+- Workflow completion time
+- Task-success rate
+- Retry success
+- Duplicate-action prevention
+- Failure recovery
+- Human-approval latency
+- Action-completion accuracy
+
+## Performance evaluation
+
+- Concurrent users
+- Query latency
+- Event throughput
+- Large-document handling
+- Dashboard refresh
+- Cost per workflow where measurable
+
+For each metric specify:
+
+- Definition
+- Formula
+- Dataset
+- Test method
+- Target
+- Acceptable threshold
+- Failure threshold
+- Visualisation
+
+Separate demonstrated results from intended production targets.
+
+Never invent measured results before tests have been executed.
+
+---
+
+# Phase 10: User Experience
+
+Design an executive-quality user experience.
+
+Required views:
+
+1. Executive summary
+2. Real-time operations view
+3. Investigation workspace
+4. Evidence and citation drawer
+5. Recommendation explanation
+6. Human approval queue
+7. Action execution status
+8. Audit trail
+9. System-health and AI-quality view
+
+For each view provide:
+
+- Target persona
+- Primary question answered
+- Main components
+- Data displayed
+- User actions
+- Empty state
+- Loading state
+- Error state
+- Unauthorized state
+- Stale-data indicator
+- Accessibility considerations
+
+The interface must demonstrate a business workflow, not only charts and chat.
+
+---
+
+# Phase 11: Repository and Specification Structure
+
+After analysis, create the following Kiro specification structure:
+
+.kiro/
+  specs/
+    selected-project/
+      requirements.md
+      design.md
+      tasks.md
+      evaluation.md
+      security.md
+      demo-script.md
+      rubric-traceability.md
+
+docs/
+  problem-analysis.md
+  challenge-comparison.md
+  architecture.md
+  data-model.md
+  agent-design.md
+  responsible-ai.md
+  threat-model.md
+  runbook.md
+  deployment.md
+  judges-guide.md
+
+src/
+  backend/
+  frontend/
+  agents/
+  workflows/
+  data/
+  evaluation/
+  simulators/
+
+snowflake/
+  ddl/
+  views/
+  policies/
+  tasks/
+  streams/
+  semantic/
+  seed/
+
+tests/
+  unit/
+  integration/
+  security/
+  evaluation/
+  end-to-end/
+
+For every file, describe:
+
+- Purpose
+- Main content
+- Dependencies
+- Definition of done
+
+Do not write placeholder documents containing only headings.
+
+---
+
+# Phase 12: Requirements
+
+Write requirements using this format:
+
+REQ-[AREA]-[NUMBER]
+
+Title:
+User story:
+Business rationale:
+Priority:
+Preconditions:
+Trigger:
+Main flow:
+Alternative flow:
+Failure flow:
+Security considerations:
+Audit requirements:
+Acceptance criteria:
+Test evidence:
+
+Acceptance criteria must use testable Given/When/Then statements.
+
+Cover:
+
+- Functional requirements
+- Data requirements
+- AI requirements
+- Security requirements
+- Governance requirements
+- Observability requirements
+- Performance requirements
+- Usability requirements
+- Demo requirements
+
+---
+
+# Phase 13: Implementation Tasks
+
+Create an ordered task plan with:
+
+- Task ID
+- Description
+- Deliverable
+- Dependencies
+- Files affected
+- Acceptance criteria
+- Test required
+- Risk
+- Parallelisation possibility
+
+Organise tasks into:
+
+1. Repository foundation
+2. Synthetic data
+3. Snowflake schema
+4. Data ingestion
+5. Semantic or analytical layer
+6. CoCo CLI skills
+7. Workflow orchestration
+8. Backend APIs
+9. User interface
+10. Security and governance
+11. Observability
+12. Evaluation
+13. Demo preparation
+14. Documentation
+15. Final rubric validation
+
+Every task must produce a verifiable artifact.
+
+---
+
+# Phase 14: Demo Story
+
+Design a seven-part demonstration:
+
+1. Enterprise problem and measurable consequence
+2. Live business event
+3. Data convergence in Snowflake
+4. AI-supported investigation with evidence
+5. Explainable recommendation
+6. Human approval and controlled action
+7. Verified outcome and business KPI
+
+Include:
+
+- Presenter narration
+- Screen being shown
+- User action
+- Expected result
+- Evidence visible
+- Metric visible
+- Failure contingency
+- Backup screenshot or recorded artifact
+- Explicit rubric point being demonstrated
+
+The demo must include at least one failure or uncertainty scenario to prove that
+the solution handles real-world conditions safely.
+
+---
+
+# Phase 15: Judge Readiness
+
+Create a judge-readiness checklist answering:
+
+- Is the enterprise problem clear in under 30 seconds?
+- Is the target user clear?
+- Is the value measurable?
+- Is CoCo CLI essential rather than decorative?
+- Does Snowflake perform meaningful data and AI work?
+- Is there a complete workflow?
+- Is evidence visible?
+- Are recommendations explainable?
+- Are actions governed?
+- Are failures handled?
+- Are synthetic-data claims transparent?
+- Are results clearly separated from projections?
+- Can the project be run using documented steps?
+- Does every major claim have a visible demonstration?
+- Does the project address all official rubric categories?
+
+Produce a final rubric traceability matrix:
+
+| Rubric category | Project capability | Demo evidence | Test evidence | Repository location | Risk |
+|-----------------|-------------------|---------------|---------------|---------------------|------|
+
+---
+
+# Required Output Order
+
+Return the work in this exact order:
+
+1. Executive interpretation of all five challenges
+2. Ambiguities and assumptions
+3. Challenge comparison matrix
+4. Recommended challenge and backup
+5. Three candidate product concepts
+6. Selected product concept
+7. Problem statement and personas
+8. MVP and exclusions
+9. Golden path and failure scenarios
+10. Technical architecture
+11. Snowflake and CoCo CLI usage
+12. Data architecture
+13. Agent/workflow design
+14. Security and Responsible AI
+15. Evaluation framework
+16. UX specification
+17. Repository structure
+18. Requirements
+19. Implementation tasks
+20. Demo walkthrough
+21. Rubric traceability
+22. Risks and mitigations
+23. Unresolved questions
+
+Stop after completing the analysis and specification.
+
+Do not start implementation until the selected concept, requirements, architecture,
+and task plan are internally consistent.
+
+Before finalising, run a consistency review
