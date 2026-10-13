@@ -93,3 +93,22 @@ COMMENT = 'Approval decisions with reviewer identity + timestamp (Req 7.5, 7.6).
 GRANT SELECT, INSERT, UPDATE ON TABLE "CASE"    TO ROLE AML_APP_ROLE;
 GRANT SELECT, INSERT, UPDATE ON TABLE SAR_DRAFT TO ROLE AML_APP_ROLE;
 GRANT SELECT, INSERT         ON TABLE APPROVAL  TO ROLE AML_APP_ROLE;  -- decisions are not edited in place
+
+
+-- --------------------------------------------------------------------------
+-- APP.ANSWER_TELEMETRY  -- per-answer AI-quality telemetry (Req 10.2)
+--   groundedness_score, dual-grounding, refusal, citation count, refusal-correct.
+-- Read back by the KPI service to compute AI-quality KPIs (Req 10.3).
+-- -----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS ANSWER_TELEMETRY (
+    case_id            STRING,
+    answer_id          STRING,
+    groundedness_score FLOAT,
+    dual_grounded      BOOLEAN,
+    refusal            BOOLEAN,
+    citation_count     NUMBER(10, 0),
+    refusal_correct    BOOLEAN,
+    recorded_at        TIMESTAMP_NTZ DEFAULT CURRENT_TIMESTAMP()
+)
+COMMENT = 'Per-answer AI-quality telemetry (Req 10.2): groundedness, dual-grounding, refusal, citation count.';
+GRANT SELECT, INSERT ON TABLE ANSWER_TELEMETRY TO ROLE AML_APP_ROLE;
