@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>SentinelAML Copilot - How to Test</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <style>
+  @page { margin: 1.6cm 1.8cm; }
+  body {
+    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+    font-size: 10.5pt; line-height: 1.5; color: #1a2233; max-width: 760px; margin: 0 auto;
+  }
+  h1 { font-size: 20pt; color: #0b5cad; margin: 0 0 2pt; border-bottom: 3px solid #0b5cad; padding-bottom: 6pt; }
+  h2 { font-size: 13.5pt; color: #0b5cad; margin: 20pt 0 6pt; border-bottom: 1px solid #d4dce6; padding-bottom: 3pt; }
+  h3 { font-size: 11.5pt; color: #14223a; margin: 13pt 0 3pt; }
+  p { margin: 5pt 0; }
+  strong { color: #0b2b50; }
+  code { background: #eef2f7; padding: 1px 5px; border-radius: 3px; font-size: 9.5pt; color: #a3306b; }
+  hr { border: none; border-top: 1px solid #e2e8f0; margin: 14pt 0; }
+  table { border-collapse: collapse; width: 100%; margin: 8pt 0; font-size: 10pt; }
+  th, td { border: 1px solid #d4dce6; padding: 6pt 9pt; text-align: left; vertical-align: top; }
+  th { background: #0b5cad; color: #fff; font-weight: 600; }
+  tr:nth-child(even) td { background: #f4f7fb; }
+  blockquote { margin: 8pt 0; padding: 7pt 12pt; background: #fff8e6; border-left: 4px solid #e0a500; color: #5c4600; border-radius: 0 4px 4px 0; }
+  blockquote p { margin: 2pt 0; }
+  a { color: #0b5cad; text-decoration: none; word-break: break-all; }
+  ul { margin: 5pt 0; padding-left: 20pt; }
+  li { margin: 3pt 0; }
+
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">SentinelAML Copilot - How to Test</h1>
+</header>
+<h1 id="sentinelaml-copilot--how-to-test">SentinelAML Copilot — How to
+Test</h1>
+<p><strong>Snowflake CoCo CLI Hackathon 2026 · Challenge 1 — Risk, Fraud
+&amp; Regulatory Intelligence Copilot</strong></p>
+<p>A governed AML suspicious-activity investigation &amp; audit-ready
+SAR copilot, built natively on the Snowflake AI Data Cloud (Cortex +
+governed semantic views). Every regulatory <strong>figure</strong> comes
+from a governed, versioned Snowflake semantic view — deterministic, the
+same answer for everyone. The LLM (Snowflake Cortex) only
+<strong>narrates</strong> around figures Snowflake already computed; it
+never invents a number, and nothing is actionable unless
+<strong>dual-grounded</strong>.</p>
+<hr />
+<h2 id="1--open-the-prototype">1 · Open the prototype</h2>
+<table>
+<tbody>
+<tr>
+<td><strong>Live link</strong></td>
+<td><a
+href="https://sentinel-aml-frontend.onrender.com">https://sentinel-aml-frontend.onrender.com</a></td>
+</tr>
+<tr>
+<td><strong>Login</strong></td>
+<td>None — access is via an in-app role switcher (see §2)</td>
+</tr>
+<tr>
+<td><strong>First load</strong></td>
+<td>Free hosting tier: the first request may take <strong>30–50
+seconds</strong> to wake the service. If the first screen is slow or
+shows a retry, please wait and click <strong>Refresh</strong>.</td>
+</tr>
+</tbody>
+</table>
+<p>All data is <strong>fully synthetic</strong> — no real customer,
+account, or transaction data is used anywhere.</p>
+<hr />
+<h2 id="2--choose-a-role-this-replaces-login">2 · Choose a role (this
+replaces login)</h2>
+<p>In the left sidebar under <strong>"Acting as role"</strong>, pick
+one:</p>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Can do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Analyst</strong></td>
+<td>View cases, run investigations</td>
+</tr>
+<tr>
+<td><strong>Compliance Officer</strong></td>
+<td>Also approve actions in the Approval Queue</td>
+</tr>
+<tr>
+<td><strong>Metric Steward</strong></td>
+<td>Also change metric definitions</td>
+</tr>
+<tr>
+<td><strong>Viewer</strong></td>
+<td>Read-only — restricted actions return an audited 403</td>
+</tr>
+</tbody>
+</table>
+<p>The role is sent as an <code>X-Role</code> header on every request;
+unentitled actions are denied and audited. No username, password, API
+key, or token is required. Snowflake credentials are server-side only
+and are never exposed to the client.</p>
+<hr />
+<h2 id="3--walk-the-golden-path-57-minutes">3 · Walk the golden path
+(5–7 minutes)</h2>
+<h3 id="step-1--command-centre">Step 1 — Command Centre</h3>
+<p>Cases are ranked by <strong>governed risk</strong>. Entity
+<strong>ENT-SMURF-001</strong> is ranked <strong>#1</strong> with a
+structuring score of ~<strong>0.90</strong>; normal entities are 0.0.
+Each case is labelled <strong>"Risk Signal"</strong> (a candidate) — the
+system never auto-confirms a finding.</p>
+<h3 id="step-2--investigation">Step 2 — Investigation</h3>
+<p>Open <strong>ENT-SMURF-001</strong> → <strong>Investigate</strong>.
+In the question box, type:</p>
+<blockquote>
+<p><strong>What is the structuring and total exposure for this
+entity?</strong></p>
+</blockquote>
+<p>Observe:</p>
+<ul>
+<li>The <strong>semantic interpretation</strong> is shown first (which
+governed metrics the question mapped to).</li>
+<li>The answer shows <strong>governed figures</strong>, each stamped
+with <strong>metric definition version v1</strong>, with the AI
+narrative clearly marked as generated (distinct from the source
+figures).</li>
+<li>Open the <strong>evidence drawer</strong> and click a figure: it
+traces to the exact metric, its version, and the generated SQL query
+lineage — plus the cited policy passage.</li>
+</ul>
+<p><strong>Try a refusal</strong> — ask something out of scope, e.g.
+<em>"Will this customer default on a loan next year?"</em> The system
+refuses rather than inventing an answer.</p>
+<h3 id="step-3--draft-sar-suspicious-activity-report">Step 3 — Draft SAR
+(Suspicious Activity Report)</h3>
+<p>Request a SAR for the case. It is produced as <strong>AI-generated
+decision support</strong>, grounded in the governed figures and cited
+policy. If any element cannot be grounded, the SAR is marked
+<strong>incomplete / not filing-ready</strong> — a deliberate safety
+guarantee, not a defect.</p>
+<h3 id="step-4--approval-queue-switch-role-to-compliance-officer">Step 4
+— Approval Queue <em>(switch role to Compliance Officer)</em></h3>
+<p>Review the recommendation, groundedness score, and full lineage, then
+<strong>Approve</strong>. The case advances toward
+<strong>ACTION_COMPLETED</strong>; any "filing" is <strong>simulated
+only</strong>.</p>
+<blockquote>
+<p><strong>Note:</strong> once approved, the case state becomes
+<em>approved</em> and stays there — this is a real workflow, not a
+reset-per-visitor demo. If you find ENT-SMURF-001 already approved, a
+previous reviewer completed the flow; the full lineage is still
+replayable in the Audit Trail (Step 5), and Investigation / SAR / Audit
+can be re-run regardless of state.</p>
+</blockquote>
+<h3 id="step-5--audit-trail">Step 5 — Audit Trail</h3>
+<p>Open the Audit Trail and <strong>replay</strong> the case: question →
+governed metric → generated query → narrative → approval, reconstructed
+from <strong>immutable, append-only</strong> audit records.</p>
+<h3 id="step-6--health--ai-quality">Step 6 — Health &amp; AI
+Quality</h3>
+<p>Operational + AI-quality KPIs, with <strong>demonstrated</strong>
+values clearly separated from <strong>intended</strong> production
+targets (measured results are never presented as targets).</p>
+<hr />
+<h2 id="4--what-to-look-for-why-this-is-not-just-a-chatbot">4 · What to
+look for (why this is not just a chatbot)</h2>
+<ul>
+<li><strong>Governed figures</strong> — numbers come only from the
+Snowflake semantic view (deterministic; the same question yields the
+same number for every user).</li>
+<li><strong>Dual-grounding gate</strong> — ungrounded or low-confidence
+output is refused or flagged, never shown as fact.</li>
+<li><strong>Human-in-the-loop</strong> — no material action without an
+explicit approval.</li>
+<li><strong>Immutable audit</strong> — every step is replayable from
+append-only audit records.</li>
+<li><strong>Role-based access + masking</strong> — enforced via
+Snowflake policies.</li>
+</ul>
+<hr />
+<h2 id="5--references">5 · References</h2>
+<table>
+<tbody>
+<tr>
+<td>Prototype</td>
+<td><a
+href="https://sentinel-aml-frontend.onrender.com">https://sentinel-aml-frontend.onrender.com</a></td>
+</tr>
+<tr>
+<td>Backend health</td>
+<td><a
+href="https://sentinel-aml-backend-u6dr.onrender.com/health">https://sentinel-aml-backend-u6dr.onrender.com/health</a></td>
+</tr>
+<tr>
+<td>Repository</td>
+<td><a
+href="https://github.com/rachitGupta-ai/Sentinel-AML-Copilot">https://github.com/rachitGupta-ai/Sentinel-AML-Copilot</a></td>
+</tr>
+<tr>
+<td>Recorded demo</td>
+<td><a
+href="https://github.com/rachitGupta-ai/Sentinel-AML-Copilot/blob/main/demo-sentinel-aml-copilot.mov">https://github.com/rachitGupta-ai/Sentinel-AML-Copilot/blob/main/demo-sentinel-aml-copilot.mov</a></td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
