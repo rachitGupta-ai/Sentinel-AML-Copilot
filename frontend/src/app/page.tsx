@@ -20,12 +20,14 @@ import { useAsync } from "@/lib/use-async";
 
 function LiveStatusBadge() {
   const { status, latest } = useLiveEvents();
-  const label =
-    status === "open" ? "Live" : status === "connecting" ? "Connecting…" : "Offline";
-  const cls = status === "open" ? "governed" : status === "connecting" ? "warn" : "danger";
+  // Only surface the badge when the live stream is actually connected. Live push
+  // is a best-effort enhancement over the REST data + Refresh button; on hosts
+  // where the WebSocket does not upgrade we simply show nothing rather than a
+  // perpetual "Connecting…" state.
+  if (status !== "open") return null;
   return (
     <span className="row small">
-      <span className={`badge ${cls}`}>{label}</span>
+      <span className="badge governed">Live</span>
       {latest ? (
         <span className="muted">
           last: {latest.type.replace(/_/g, " ")} {formatTime(latest.occurred_at)}
