@@ -55,3 +55,17 @@ COPY INTO RAW.POLICY_DOC (policy_doc_id, title, body, source, version, ingested_
     FROM @RAW.SEED_STAGE/policy_doc.csv
     FILE_FORMAT = (FORMAT_NAME = RAW.SEED_CSV_FORMAT)
     ON_ERROR = 'ABORT_STATEMENT';
+
+-- Embed policy documents into VEC.POLICY_CHUNK so SAR drafts can ground their
+-- cited policy basis (Req 6.2) and reach completeness -> RECOMMENDATION_READY.
+-- Uses Cortex EMBED_TEXT_768 in-database (768-dim matches VEC.POLICY_CHUNK).
+INSERT INTO VEC.POLICY_CHUNK (chunk_id, policy_doc_id, chunk_index, chunk_text, embedding, embedding_model, created_at)
+SELECT
+    policy_doc_id || '-0',
+    policy_doc_id,
+    0,
+    body,
+    SNOWFLAKE.CORTEX.EMBED_TEXT_768('snowflake-arctic-embed-m-v1.5', body),
+    'snowflake-arctic-embed-m-v1.5',
+    CURRENT_TIMESTAMP()
+FROM RAW.POLICY_DOC;
